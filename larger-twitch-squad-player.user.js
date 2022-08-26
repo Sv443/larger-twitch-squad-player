@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name        Larger Twitch squad player
-// @description Removes the unnecessary title bar on Twitch squad streams so the video player can be larger
-// @namespace   Sv443
+// @description Removes the title bar in Twitch squad streams to increase the player size
+// @namespace   https://github.com/Sv443/larger-twitch-squad-player
 // @match       *://www.twitch.tv/*/squad
 // @grant       none
+// @license     MIT
 // @version     1.0
 // @author      Sv443
 // @run-at      document-start
+// @icon        https://www.google.com/s2/favicons?domain=twitch.tv
 // ==/UserScript==
 
 "use strict";
