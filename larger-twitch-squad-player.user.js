@@ -5,32 +5,29 @@
 // @match       *://www.twitch.tv/*/squad
 // @grant       none
 // @license     MIT
-// @version     1.0
+// @version     1.1
 // @author      Sv443
 // @run-at      document-start
-// @icon        https://www.google.com/s2/favicons?domain=twitch.tv
+// @icon        https://icons.duckduckgo.com/ip3/twitch.tv.ico
+// @require     https://greasyfork.org/scripts/472956-userutils/code/UserUtils.js
 // ==/UserScript==
 
 "use strict";
 
 document.addEventListener("DOMContentLoaded", removeBar);
 
-let tries = 0;
+function removeBar() {
+  try {
+    UserUtils.initOnSelector();
 
-function removeBar()
-{
-  const bar = document.querySelector(".squad-stream-top-bar__container");
-
-  if(bar)
-  {
-    bar.remove();
-    console.info("Removed title bar.\nUserscript by Sv443.");
+    UserUtils.onSelector(".squad-stream-top-bar__container", {
+      listener: (bar) => {
+        bar.remove();
+        console.info("Removed title bar.\nUserscript by Sv443: https://github.com/Sv443/larger-twitch-squad-player");
+      }
+    });
   }
-  else if(tries < 20)
-  {
-    setTimeout(removeBar, 100);
-    tries++;
+  catch(err) {
+    console.error("Couldn't remove title bar:", err);
   }
-  else
-    console.error("Couldn't find title bar to remove.");
 }
